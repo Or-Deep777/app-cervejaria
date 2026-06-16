@@ -25,4 +25,6 @@ public class BeerService {
     public List<Beer> listar(){
         return repository.findAll();
     }
+
+
 }

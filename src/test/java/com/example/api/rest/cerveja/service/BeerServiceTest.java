@@ -10,6 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
@@ -26,8 +27,9 @@ public class BeerServiceTest {
 
     @Test
     void deveSalvarCervejaComSucesso(){
+
         Beer beer = new Beer();
-        beer.setNome("Skol");
+        beer.setNome("Heineken");
         beer.setQuantidade(100);
 
         when(repository.save(any())).thenReturn(beer);
@@ -36,13 +38,14 @@ public class BeerServiceTest {
 
         assertNotNull(resultado);
 
-        assertEquals("Skol", resultado.getNome());
+        assertEquals("Heineken", resultado.getNome());
 
         verify(repository, times(1)).save(any());
     }
 
     @Test
     void deveListarCervejas(){
+
         List<Beer> lista = List.of(
                 new Beer()
         );
@@ -51,6 +54,6 @@ public class BeerServiceTest {
 
         List<Beer> resultado = service.listar();
 
-        assertEquals(1,resultado.size());
+        assertEquals(1, resultado.size());
     }
 }
